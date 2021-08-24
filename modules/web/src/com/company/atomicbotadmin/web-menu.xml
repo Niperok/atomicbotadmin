@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+    <menu id="application-atomicbotadmin" insertBefore="administration" caption="mainMsg://menu_config.application-atomicbotadmin">
+        <item screen="atomicbotadmin_NewsItem.browse" caption="mainMsg://menu_config.atomicbotadmin_NewsItem.browse"/>
+    </menu>
+</menu-config>

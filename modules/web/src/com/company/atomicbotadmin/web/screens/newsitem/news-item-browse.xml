@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://newsItemBrowse.caption"
+        focusComponent="newsItemsTable"
+        messagesPack="com.company.atomicbotadmin.web.screens.newsitem">
+    <data readOnly="true">
+        <collection id="newsItemsDc"
+                    class="com.company.atomicbotadmin.entity.NewsItem"
+                    view="newsItem-view">
+            <loader id="newsItemsDl">
+                <query>
+                    <![CDATA[select e from atomicbotadmin_NewsItem e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="newsItemsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="newsItemsTable"
+                dataLoader="newsItemsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="newsItemsTable"
+                    width="100%"
+                    dataContainer="newsItemsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="date"/>
+                <column id="header"/>
+                <column id="previewText"/>
+                <column id="image"/>
+                <column id="linkToOriginal"/>
+                <column id="hashTags"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="newsItemsTable.create"/>
+                <button id="editBtn" action="newsItemsTable.edit"/>
+                <button id="removeBtn" action="newsItemsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>
